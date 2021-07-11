@@ -33,38 +33,26 @@ class SignInPage extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 8.0,
+            height: 48.0,
           ),
-          ElevatedButton(
+          SignInButton(
+            text: "Sign In with Google",
             onPressed: _signInWithGoogle,
-            child: Text(
-              'Sign in with Google',
-              style: TextStyle(
-                color: Colors.black87,
-                fontSize: 15.0,
-              ),
-            ),
-            style: ElevatedButton.styleFrom(
-              primary: Colors.white,
-              elevation: 10,
-              shadowColor: Colors.blue,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-            ),
+            color: Colors.white,
+            textColor: Colors.black87,
+            buttonRadius: 30,
+            height: 50,
           ),
           SizedBox(
             height: 8.0,
           ),
-          CustomElevatedButton(
-            child: Text(
-              "Sign in with Facebook",
-              style: TextStyle(color: Colors.black87, fontSize: 15.0),
-            ),
-            color: Colors.blue,
-            borderRadius: 30,
+          SignInButton(
+            text: "Sign In with Facebook",
             onPressed: _signInWithGoogle,
-            height: 35,
+            color: Color(0xFF334D92),
+            textColor: Colors.white,
+            buttonRadius: 30,
+            height: 50,
           ),
           SizedBox(
             height: 8.0,
@@ -73,7 +61,26 @@ class SignInPage extends StatelessWidget {
             text: "Sign In with Email",
             onPressed: _signInWithGoogle,
             buttonRadius: 30,
-            color: Colors.pink[200],
+            color: Colors.teal[700],
+            textColor: Colors.white,
+            height: 50,
+          ),
+          SizedBox(
+            height: 8.0,
+          ),
+          Text(
+            'Or',
+            style: TextStyle(fontSize: 14.0, color: Colors.black87),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(
+            height: 8.0,
+          ),
+          SignInButton(
+            text: "Sign In with Email",
+            onPressed: _signInWithGoogle,
+            buttonRadius: 30,
+            color: Colors.lime[300],
             textColor: Colors.black87,
             height: 50,
           )
