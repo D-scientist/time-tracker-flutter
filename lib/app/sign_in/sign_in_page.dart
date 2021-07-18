@@ -1,11 +1,23 @@
-import 'dart:ffi';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:time_tracker_app/app/sign_in/sign_in_button.dart';
 import 'package:time_tracker_app/app/sign_in/social_sign_in_button.dart';
-import 'package:time_tracker_app/common_widgets/custom_elevated_button.dart';
 
 class SignInPage extends StatelessWidget {
+  const SignInPage({Key key, @required this.onSignIn}) : super(key: key);
+
+  final void Function(User) onSignIn;
+
+  //Sign In anonymously
+  Future<void> _signInAnonymously() async {
+    try {
+      final userCredential = await FirebaseAuth.instance.signInAnonymously();
+      onSignIn(userCredential.user);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +55,7 @@ class SignInPage extends StatelessWidget {
             color: Colors.white,
             height: 50,
             textColor: Colors.black87,
-            onPressed: (){},
+            onPressed: () {},
           ),
           SizedBox(
             height: 8.0,
@@ -54,8 +66,8 @@ class SignInPage extends StatelessWidget {
             buttonRadius: 30,
             color: Color(0xFF334D92),
             height: 50,
-            textColor:  Colors.white,
-            onPressed: (){},
+            textColor: Colors.white,
+            onPressed: () {},
           ),
           SizedBox(
             height: 8.0,
@@ -80,8 +92,8 @@ class SignInPage extends StatelessWidget {
             height: 8.0,
           ),
           SignInButton(
-            text: "Sign In with Email",
-            onPressed: _signInWithGoogle,
+            text: "Sign In Anonymously",
+            onPressed: _signInAnonymously,
             buttonRadius: 30,
             color: Colors.lime[300],
             textColor: Colors.black87,
@@ -96,5 +108,5 @@ class SignInPage extends StatelessWidget {
     );
   }
 
-  Void _signInWithGoogle() {}
+  void _signInWithGoogle() {}
 }
